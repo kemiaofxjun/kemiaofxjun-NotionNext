@@ -84,5 +84,4 @@ return (
     </div>
   )
                             
-
 export default Player

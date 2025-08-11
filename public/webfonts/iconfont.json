@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1229713",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "8642071",
+      "name": "HOME MESSAGE",
+      "font_class": "HOMEMESSAGE",
+      "unicode": "e7eb",
+      "unicode_decimal": 59371
+    },
+    {
+      "icon_id": "33170348",
+      "name": "about",
+      "font_class": "about",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
       "icon_id": "3106425",
       "name": "music",
       "font_class": "music",
@@ -67,7 +88,7 @@
       "font_class": "archives",
       "unicode": "ede3",
       "unicode_decimal": 60899
-    },
+    }，
     {
       "icon_id": "13099447",
       "name": "github",

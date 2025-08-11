@@ -73,7 +73,7 @@ const Player = () => {
           preload='auto'
           api={siteConfig(
             'MUSIC_PLAYER_METING_API',
-            'https://meting.051531.xyz/'
+            'https://meting.051531.xyz/meting'
           )}
           autoplay={autoPlay}
           order={siteConfig('MUSIC_PLAYER_ORDER')}

@@ -72,7 +72,7 @@ return (
           type='playlist'
           preload='auto'
           lrc-type={siteConfig('MUSIC_PLAYER_METING_LRC_TYPE')}
-          api='https://api.mizore.cn/meting/api.php?server=netease&type=playlist&id=13681647281&r=:r'
+          api='https://v.iarc.top/'
           autoplay={autoPlay}
           order={siteConfig('MUSIC_PLAYER_ORDER')}
           server={siteConfig('MUSIC_PLAYER_METING_SERVER')}

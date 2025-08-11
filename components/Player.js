@@ -73,7 +73,7 @@ const Player = () => {
           preload='auto'
           api={siteConfig(
             'MUSIC_PLAYER_METING_API',
-            'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r'
+            'https://meting.kemiaosw.top/api'
           )}
           autoplay={autoPlay}
           order={siteConfig('MUSIC_PLAYER_ORDER')}

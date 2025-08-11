@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4996354 */
+  src: url('iconfont.woff2?t=1754896052555') format('woff2'),
+       url('iconfont.woff?t=1754896052555') format('woff'),
+       url('iconfont.ttf?t=1754896052555') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+  content: "\e606";
+}
+
+.icon-HOMEMESSAGE:before {
+  content: "\e7eb";
+}
+
+.icon-about:before {
+  content: "\e68a";
+}
+
+.icon-music:before {
+  content: "\e611";
+}
+
+.icon-telegram:before {
+  content: "\e62a";
+}
+
+.icon-fenlei:before {
+  content: "\e689";
+}
+
+.icon-mail:before {
+  content: "\e616";
+}
+
+.icon-qqqingliao:before {
+  content: "\e634";
+}
+
+.icon-LINK:before {
+  content: "\e7fb";
+}
+
+.icon-tuite:before {
+  content: "\e602";
+}
+
+.icon-photography:before {
+  content: "\e6ce";
+}
+
+.icon-archives:before {
+  content: "\ede3";
+}
+
+.icon-github:before {
+  content: "\e600";
+}
+
+.icon-netease:before {
+  content: "\e605";
+}
+
+.icon-shejiaotubiao-02:before {
+  content: "\e641";
+}
+
+.icon-bilibili:before {
+  content: "\e723";
+}
+
+.icon-guanyuwomen:before {
+  content: "\1010e";
+}
+
+.icon-a-addtag:before {
+  content: "\e6d0";
+}
+
+.icon-daimayemian:before {
+  content: "\e61e";
+}
+

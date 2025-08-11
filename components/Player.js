@@ -59,7 +59,7 @@ const Player = () => {
     }
   }, [])
 
-  return (
+return (
     <div className={playerVisible ? 'visible' : 'invisible'}>
       <link
         rel='stylesheet'
@@ -71,10 +71,8 @@ const Player = () => {
           fixed='true'
           type='playlist'
           preload='auto'
-          api={siteConfig(
-            'MUSIC_PLAYER_METING_API',
-            'https://v.iarc.top/'
-          )}
+          lrc-type={siteConfig('MUSIC_PLAYER_METING_LRC_TYPE')}
+          api='https://api.mizore.cn/meting/api.php?server=netease&type=playlist&id=13681647281&r=:r'
           autoplay={autoPlay}
           order={siteConfig('MUSIC_PLAYER_ORDER')}
           server={siteConfig('MUSIC_PLAYER_METING_SERVER')}
@@ -85,6 +83,6 @@ const Player = () => {
       )}
     </div>
   )
-}
+                            
 
 export default Player

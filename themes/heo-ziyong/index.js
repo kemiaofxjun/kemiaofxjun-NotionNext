@@ -249,30 +249,78 @@ const LayoutArchive = props => {
  * @returns
  */
 const LayoutMemos = (props) => {
+  const { lock, validPassword, post, fullWidth, hasCode } = props
+
+  // 说说页专用 pageInfo
   const memoPageInfo = {
-    id: "24bc44b6dda680e68c25f285c3535014",
-    type: "Memos",
-    title: "我的说说",
-  };
+    id: '24fc44b6dda680e8b80dd9fdb87ac6d2', // Notion 中「说说」菜单的 pageId
+    type: 'Memos',
+    title: '我的说说'
+  }
 
   return (
-    <div className='p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1e1e1e]'>
+    <>
+      <div
+        className={`article h-full w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} bg-white dark:bg-[#18171d] dark:border-gray-600 lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4`}>
+        {/* 文章锁 */}
+        {lock && <PostLock validPassword={validPassword} />}
 
-      <div className='px-3'>
-        {/* Memos 内容主体 */}
-        <BlogMemos {...props} />
+        {!lock && (
+          <div className='mx-auto md:w-full md:px-5'>
+            {/* 文章主体 */}
+            <article
+              id='article-wrapper'
+              itemScope
+              itemType='https://schema.org/Movie'>
+              <section
+                className='wow fadeInUp p-5 justify-center mx-auto'
+                data-wow-delay='.2s'>
+                {/* 说说内容 */}
+                <BlogMemos {...props} />
+              </section>
 
-        {/* 分隔线 */}
-        <div className='pt-6 border-t border-dashed border-gray-300 dark:border-gray-600'></div>
+              {/* 上一篇 / 下一篇 */}
+              <PostAdjacent {...props} />
 
-        {/* 评论区 */}
-        <div className='mt-6'>
-          <Comment frontMatter={memoPageInfo} />
-        </div>
+              {/* 分享 */}
+              <ShareBar post={post} />
+
+              {/* 版权 & 推荐 */}
+              {post?.type === 'Post' && (
+                <div className='px-5'>
+                  <PostCopyright {...props} />
+                  <PostRecommend {...props} />
+                </div>
+              )}
+            </article>
+
+            {/* 评论区 */}
+            {!fullWidth && (
+              <div>
+                <hr className='my-4 border-dashed' />
+                {/* 评论区上方广告 */}
+                <div className='py-2'>
+                  <AdSlot />
+                </div>
+                {/* 评论互动 */}
+                <div className='duration-200 overflow-x-auto px-5'>
+                  <div className='text-2xl dark:text-white'>
+                    <i className='fas fa-comment mr-1' />
+                    {locale.COMMON.COMMENTS}
+                  </div>
+                  <Comment frontMatter={memoPageInfo} className='' />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-    </div>
-  );
-};
+
+      {/* 悬浮目录按钮（如不需要可删） */}
+      <FloatTocButton {...props} />
+    </>
+  )
+}
 
 /**
  * 文章详情

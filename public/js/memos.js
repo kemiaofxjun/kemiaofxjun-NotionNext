@@ -47,7 +47,7 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.051531.xyz',
+    host: 'https://memos.050815.xyz',
     limit: '10',
     creatorId: '1',
     domId: '#memos',

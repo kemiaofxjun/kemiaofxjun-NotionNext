@@ -1,30 +1,24 @@
-// /pages/Memos/index.js
-import { getGlobalData } from '@/lib/db/getSiteData'
-import { getMemos } from '@/lib/memos'          // 你自己的 Memos 数据拉取逻辑
-import LayoutBase from '@/themes/heo/LayoutBase'
-import LayoutMemos from '@/themes/heo/LayoutMemos'
+import { useRouter } from 'next/router'
+import { getLayoutByTheme } from '@/themes/theme'
+import { siteConfig } from '@/lib/config'
+import { getGlobalData } from '@/lib/db/getSiteData'  //若为NotionNext 4.3.2+版本，此处应为 @/lib/db/getSiteData
+import React from 'react'
 import BLOG from '@/blog.config'
 
-export async function getStaticProps({ locale }) {
-  // 1. 站点级数据（导航、配置、locale 等）
-  const global = await getGlobalData({ from: 'memos-index', locale })
+const MemosIndex = props => {
+  const Layout = getLayoutByTheme({ theme: siteConfig('THEME'), router: useRouter() })
 
-  // 2. 说说数据：只取最近 30 条（按需调整）
-  const memos = await getMemos({ limit: 30 })
+  return <Layout {...props} />
+}
 
+export async function getStaticProps() {
+  const from = 'tag-index-props'
+  const props = await getGlobalData({ from })
+  delete props.allPages
   return {
-    props: {
-      ...global,   // 主题需要的全局 props
-      memos        // 说说列表
-    },
+    props,
     revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND)
   }
 }
 
-export default function MemosPage(props) {
-  return (
-    <LayoutBase {...props}>
-      <LayoutMemos {...props} />
-    </LayoutBase>
-  )
-}
+export default MemosIndex

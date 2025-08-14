@@ -257,8 +257,6 @@ const LayoutMemos = (props) => {
 
   return (
     <div className='p-5 rounded-xl border dark:border-gray-600 max-w-6xl w-full bg-white dark:bg-[#1e1e1e]'>
-      {/* 可选：顶部分类/标签条（如不需要可删） */}
-      {/* <CategoryBar {...props} border={false} /> */}
 
       <div className='px-3'>
         {/* Memos 内容主体 */}

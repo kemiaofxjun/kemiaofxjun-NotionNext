@@ -26,6 +26,7 @@
         logElementEvent("🔥 CANCEL", element);
     };
 
+    // @ts-ignore
     var ll = new LazyLoad({
         class_applied: "lz-applied",
         class_loading: "lz-loading",
@@ -55,6 +56,7 @@ var memo = {
     name: '克喵爱吃卤面'
 }
 if (typeof (memos) !== "undefined") {
+    // @ts-ignore
     for (var key in memos) {
         if (memos[key]) {
             memo[key] = memos[key];
@@ -82,6 +84,7 @@ if (memoDom) {
     btn.addEventListener("click", function () {
         btn.textContent = '努力加载中……';
         updateHTMl(nextDom)
+        // @ts-ignore
         if (nextLength < limit) { // 返回数据条数小于限制条数，隐藏
             document.querySelector("button.button-load").remove()
             btnRemove = 1
@@ -102,6 +105,7 @@ function getFirstList() {
             return
         }
         page++
+        // @ts-ignore
         offset = limit * (page - 1)
         getNextList()
     });
@@ -117,6 +121,7 @@ function getNextList() {
         nextDom = resdata
         nextLength = nextDom.length
         page++
+        // @ts-ignore
         offset = limit * (page - 1)
         if (nextLength < 1) { // 返回数据条数为 0 ，隐藏
             document.querySelector("button.button-load").remove()
@@ -130,8 +135,10 @@ function getNextList() {
 
 document.addEventListener('click', function (event) {
     var target = event.target;
+    // @ts-ignore
     if (target.tagName.toLowerCase() === 'a' && target.getAttribute('href').startsWith('#')) {    
         event.preventDefault();
+        // @ts-ignore
         tag = target.getAttribute('href').substring(1); // 获取标签名
         if (btnRemove) {    // 如果 botton 被 remove
             btnRemove = 0;
@@ -141,6 +148,7 @@ document.addEventListener('click', function (event) {
             btn.addEventListener("click", function () {
                 btn.textContent = '努力加载中……';
                 updateHTMl(nextDom)
+                // @ts-ignore
                 if (nextLength < limit) { // 返回数据条数小于限制条数，隐藏
                     document.querySelector("button.button-load").remove()
                     btnRemove = 1
@@ -176,6 +184,7 @@ function getTagFirstList() {
             return
         }
         page++
+        // @ts-ignore
         offset = limit * (page - 1)
         getNextList()
     });
@@ -206,12 +215,15 @@ function updateHTMl(data) {
     const YOUTUBE_REG = /<a\shref="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g;
 
     // Marked Options
+    // @ts-ignore
     marked.setOptions({
         breaks: true,
         smartypants: true,
         langPrefix: 'language-',
         highlight: function (code, lang) {
+            // @ts-ignore
             const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+            // @ts-ignore
             return hljs.highlight(code, { language }).value;
         },
     });
@@ -226,6 +238,7 @@ function updateHTMl(data) {
         // 在 index.html 引入 JS：<script type="text/javascript" src="assets/js/pangu.min.js?v=4.0.7"></script>
         // 把下面的 memoContREG = marked.parse(memoContREG) 改为：memoContREG = marked.parse(pangu.spacing(memoContREG))
 
+        // @ts-ignore
         memoContREG = marked.parse(memoContREG)
             .replace(BILIBILI_REG, "<div class='video-wrapper'><iframe src='//www.bilibili.com/blackboard/html5mobileplayer.html?bvid=$1&as_wide=1&high_quality=1&danmaku=0' scrolling='no' border='0' frameborder='no' framespacing='0' allowfullscreen='true' style='position:absolute;height:100%;width:100%;'></iframe></div>")
             .replace(YOUTUBE_REG, "<div class='video-wrapper'><iframe src='https://www.youtube.com/embed/$1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen title='YouTube Video'></iframe></div>")
@@ -247,7 +260,9 @@ function updateHTMl(data) {
                 if (resexlink) {
                     resLink = resexlink
                 } else {
+                    // @ts-ignore
                     fileId = resourceList[j].publicId || resourceList[j].name
+                    // @ts-ignore
                     resLink = memos+'/o/r/'+fileId
                 }
                 if (resType == 'image') {
@@ -259,7 +274,9 @@ function updateHTMl(data) {
                 }
             }
             if (imgUrl) {
+                // @ts-ignore
                 var resImgGrid = ""
+                // @ts-ignore
                 if (resImgLength !== 1) { var resImgGrid = "grid grid-" + resImgLength }
                 memoContREG += '<div class="resource-wrapper "><div class="images-wrapper">' + imgUrl + '</div></div>'
             }
@@ -267,6 +284,7 @@ function updateHTMl(data) {
                 memoContREG += '<div class="resource-wrapper "><p class="datasource">' + resUrl + '</p></div>'
             }
         }
+        // @ts-ignore
         memoResult += '<li class="timeline"><div class="memos__content"><div class="memos__text"><div class="memos__userinfo"><div>' + memo.name + '</div><div><svg viewBox="0 0 24 24" aria-label="认证账号" class="memos__verify"><g><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"></path></g></svg></div><div class="memos__id">@' + memo.username + '</div></div><p>' + memoContREG + '</p></div><div class="memos__meta"><small class="memos__date">' + moment(data[i].createdTs * 1000).twitter() + ' • 来自「<a href="' + memo.host + 'm/' + data[i].id + '" target="_blank">Memos</a>」</small></div></div></li>'
     }
     var memoBefore = '<ul class="">'
@@ -277,7 +295,9 @@ function updateHTMl(data) {
     // fetchDB()
     document.querySelector('button.button-load').textContent = '加载更多';
     // 更新DOM后调用highlightAll进行代码高亮
+    // @ts-ignore
     if (window.hljs) {
+        // @ts-ignore
         window.hljs.highlightAll();
     }
 }
@@ -292,7 +312,9 @@ function fetchDB() {
     var dbA = document.querySelectorAll(".timeline a[href*='douban.com/subject/']:not([rel='noreferrer'])") || '';
     if (dbA) {
         for (var i = 0; i < dbA.length; i++) {
+            // @ts-ignore
             _this = dbA[i]
+            // @ts-ignore
             var dbHref = _this.href
             var db_reg = /^https\:\/\/(movie|book)\.douban\.com\/subject\/([0-9]+)\/?/;
             var db_type = dbHref.replace(db_reg, "$1");
@@ -354,6 +376,7 @@ function bookShow(fetch_href, fetch_item) {
 // 解析豆瓣 End
 
 // Images lightbox
+// @ts-ignore
 window.ViewImage && ViewImage.init('.container img');
 
 // Memos Total Start
@@ -366,10 +389,12 @@ function getTotal() {
             var memosCount = document.getElementById('total');
             memosCount.innerHTML = allnums;
         }
+    // @ts-ignore
     }).catch(err => {
         // Do something for an error here
     });
 };
+// @ts-ignore
 window.onload = getTotal();
 // Memos Total End
 

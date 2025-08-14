@@ -1,6 +1,8 @@
 // 处理发布时间 moment.js
 // moment.js locale
+// @ts-ignore
 moment.updateLocale('zh-cn', {
+    // @ts-ignore
     meridiem: function (hour, minute, isLowercase) {
         if (hour < 6) {
             return "凌晨";
@@ -25,6 +27,7 @@ moment.updateLocale('zh-cn', {
     hour = 36e5;
     day = 864e5;
     week = 6048e5;
+    // @ts-ignore
     year = new Date().getFullYear();
     formats = {
         seconds: {
@@ -64,6 +67,7 @@ moment.updateLocale('zh-cn', {
             } else if (format === 'long') {
                 if (diff < week) {
                     unit = 'days';
+                // @ts-ignore
                 } else if (this.year() == year) {
                     return this.format('MM月DD日，HH:mm');
                 } else {
@@ -90,14 +94,22 @@ moment.updateLocale('zh-cn', {
         return moment;
     };
 
+    // @ts-ignore
     if (typeof define === 'function' && define.amd) {
         define('moment-twitter', ['moment'], function (moment) {
             return this.moment = initialize(moment);
         });
     } else if (typeof module !== 'undefined') {
+        // @ts-ignore
         module.exports = initialize(require('moment'));
+    // @ts-ignore
     } else if (typeof window !== "undefined" && window.moment) {
         this.moment = initialize(this.moment);
     }
 
 }).call(this);
+// @ts-ignore
+function define(arg0, arg1, arg2) {
+    throw new Error('Function not implemented.');
+}
+

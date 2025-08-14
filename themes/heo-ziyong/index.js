@@ -250,7 +250,7 @@ const LayoutArchive = props => {
  */
 const LayoutMemos = (props) => {
   const memoPageInfo = {
-    id: "9ecc78643def47bcvabeg5fn26304679",
+    id: "24bc44b6dda680e68c25f285c3535014",
     type: "Memos",
     title: "我的说说",
   };

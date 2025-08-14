@@ -121,10 +121,10 @@ export const useLayoutByTheme = ({ layoutName, theme }) => {
  * @param {*} path
  * @returns
  */
-const getLayoutNameByPath = path => {
-  const layoutName = LAYOUT_MAPPINGS[path] || 'LayoutSlug'
-  //   console.log('path-layout',path,layoutName)
-  return layoutName
+export const getLayoutByTheme = ({ theme, router }) => {
+  // 构造 layoutName
+  const layoutName = LAYOUT_MAPPINGS[router.pathname] || 'LayoutSlug'
+  return useLayoutByTheme({ layoutName, theme })
 }
 
 /**

@@ -18,6 +18,8 @@ const SocialButton = () => {
   const ENABLE_RSS = siteConfig('ENABLE_RSS')
   const CONTACT_BILIBILI = siteConfig('CONTACT_BILIBILI')
   const CONTACT_YOUTUBE = siteConfig('CONTACT_YOUTUBE')
+  const CONTACT_QQ = siteConfig('CONTACT_QQ')
+  const CONTACT_NETEASE = siteConfig('CONTACT_NETEASE')
 
   const emailIcon = useRef(null)
 
@@ -103,6 +105,24 @@ const SocialButton = () => {
             title={'bilibili'}
             href={CONTACT_BILIBILI}>
             <i className='fab fa-bilibili transform hover:scale-125 duration-150' />
+          </a>
+        )}
+        {CONTACT_QQ && (
+          <a
+            target='_blank'
+            rel='noreferrer'
+            title={'qq'}
+            href={CONTACT_QQ}>
+            <i className='fab fa-qq transform hover:scale-125 duration-150' />
+          </a>
+        )}
+        {CONTACT_NETEASE && (
+          <a
+            target='_blank'
+            rel='noreferrer'
+            title={'netease'}
+            href={CONTACT_NETEASE}>
+            <i className='fas fa-music transform hover:scale-125 duration-150' />
           </a>
         )}
         {CONTACT_YOUTUBE && (
